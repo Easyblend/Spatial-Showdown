@@ -18,19 +18,9 @@ jobs:
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
-          java-version: '11'      # Set Java version to 11 (adjust if necessary)
-          distribution: 'adoptopenjdk'  # Specify AdoptOpenJDK distribution (or other if needed)
+          java-version: '11'        # Set Java version to 11 (adjust if necessary)
+          distribution: 'adoptium'  # Correct distribution name for Adoptium (formerly AdoptOpenJDK)
 
       # Step 3: Build the Spring Boot app (you might use Maven or Gradle)
       - name: Build Spring Boot app
-        run: ./mvnw clean package -DskipTests  # If you're using Maven
-        # If you're using Gradle, use the command: ./gradlew build
-
-      # Step 4: Deploy to Azure Web App
-      - name: Deploy to Azure Web App
-        uses: Azure/webapps-deploy@v2
-        with:
-          app-name: my-springboot-app-service    # The name of your Azure App Service
-          slot-name: production                  # Optional: set a deployment slot if using one
-          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}  # Publish profile stored as a secret
-          package: './target/my-app.jar'        # Path to your JAR file (adjust as necessary)
+        run: ./mvnw clean package -Dskip
