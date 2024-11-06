@@ -23,4 +23,14 @@ jobs:
 
       # Step 3: Build the Spring Boot app (you might use Maven or Gradle)
       - name: Build Spring Boot app
-        run: ./mvnw clean package -Dskip
+        run: ./mvnw clean package -DskipTests  # If you're using Maven
+        # If you're using Gradle, use the command: ./gradlew build
+
+      # Step 4: Deploy to Azure Web App
+      - name: Deploy to Azure Web App
+        uses: Azure/webapps-deploy@v2
+        with:
+          app-name: my-springboot-app-service    # The name of your Azure App Service
+          slot-name: production                  # Optional: set a deployment slot if using one
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}  # Publish profile stored as a secret
+          package: './target/my-app.jar'        # Path to your JAR file (adjust as necessary)
