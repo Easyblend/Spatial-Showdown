@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### ignore city-stealer node_modules ###
+city-stealer/node_modules/
+city-stealer/build/
