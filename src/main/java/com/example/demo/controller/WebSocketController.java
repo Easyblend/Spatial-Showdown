@@ -8,6 +8,8 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 
 import com.example.demo.model.CountriesConquered;
@@ -16,6 +18,7 @@ import com.example.demo.model.UserMessage;
 
 
 @Controller
+@RestController
 public class WebSocketController {
 
     // Broadcast to all clients subscribed to /topic/messages

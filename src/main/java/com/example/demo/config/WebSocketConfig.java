@@ -21,7 +21,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
-                .setAllowedOrigins("http://localhost:3000")  // Allow CORS for React app
+                .setAllowedOrigins("https://my-springboot-app-service.azurewebsites.net")  // Allow CORS for React app
                 .withSockJS(); // Enable fallback using SockJS
     }
 }
