@@ -21,7 +21,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/ws")
-                .setAllowedOrigins("https://spatial-wars.netlify.app")  // Allow CORS for React app
+                .setAllowedOrigins(
+                        "https://spatial-wars.netlify.app",
+                        "http://localhost:3000"
+                )  // Allow CORS for React app
                 .withSockJS(); // Enable fallback using SockJS
     }
 }
