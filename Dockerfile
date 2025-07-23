@@ -9,4 +9,4 @@ COPY . .
 RUN ./mvnw clean package -DskipTests
 
 # Use the generated jar (adjust the name if needed)
-CMD ["java", "-jar", "target/your-app-name-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/demo-0.0.1-SNAPSHOT.jar"]
