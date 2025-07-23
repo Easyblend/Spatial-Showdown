@@ -1,15 +1,12 @@
-﻿# Use a lightweight Java 17 image
-FROM eclipse-temurin:17-jdk-alpine
+﻿FROM eclipse-temurin:17-jdk-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Copy the built jar file
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
+# Copy all files into the image
+COPY . .
 
-# Expose your server port (optional, for local dev clarity)
-EXPOSE 8080
+# Run Maven to build the project inside the image
+RUN ./mvnw clean package -DskipTests
 
-# Run the jar file
-ENTRYPOINT ["java","-jar","app.jar"]
+# Use the generated jar (adjust the name if needed)
+CMD ["java", "-jar", "target/your-app-name-0.0.1-SNAPSHOT.jar"]
